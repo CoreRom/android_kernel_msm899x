@@ -885,6 +885,8 @@ void subsystem_put(void *subsystem)
 	}
 	mutex_unlock(&track->lock);
 
+	subsystem_free_memory(subsys, NULL);
+
 	subsys_d = find_subsys(subsys->desc->depends_on);
 	if (subsys_d) {
 		subsystem_put(subsys_d);
